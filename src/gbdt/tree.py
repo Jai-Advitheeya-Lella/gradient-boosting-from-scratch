@@ -208,7 +208,7 @@ class TreeGrower:
         self._heap: list[_Candidate] = []
 
         rows = self.rows
-        hist = K.build_histogram(self.XbT, rows, self.g, self.h, self.features, self.n_bins_total)
+        hist = K.build_histogram(self.XbT, rows, self.g, self.h, self.features, self.n_bins, self.n_bins_total)
         G = float(self.g[rows].sum())
         H = float(self.h[rows].sum())
         root = self._new_node(rows, hist, G, H, float(rows.shape[0]), 0)
@@ -222,10 +222,10 @@ class TreeGrower:
             left_rows, right_rows = K.partition_rows(self.XbT, node["rows"], f, b, dl, self.missing_bin)
             # histogram subtraction: build the smaller child, derive the larger
             if left_rows.shape[0] <= right_rows.shape[0]:
-                hl_ = K.build_histogram(self.XbT, left_rows, self.g, self.h, self.features, self.n_bins_total)
+                hl_ = K.build_histogram(self.XbT, left_rows, self.g, self.h, self.features, self.n_bins, self.n_bins_total)
                 hr_ = node["hist"] - hl_
             else:
-                hr_ = K.build_histogram(self.XbT, right_rows, self.g, self.h, self.features, self.n_bins_total)
+                hr_ = K.build_histogram(self.XbT, right_rows, self.g, self.h, self.features, self.n_bins, self.n_bins_total)
                 hl_ = node["hist"] - hr_
             node["hist"] = None
             node["rows"] = None

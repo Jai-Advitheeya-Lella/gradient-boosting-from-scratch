@@ -33,7 +33,7 @@ def test_best_split_matches_brute_force(seed):
     XbT = bm.transform(X)
     rows = np.arange(n, dtype=np.int32)
     feats = np.arange(d)
-    hist = K.build_histogram(XbT, rows, g, h, feats, bm.max_bins)
+    hist = K.build_histogram(XbT, rows, g, h, feats, bm.n_bins_, bm.max_bins)
     gain, f, b, dl, gl, hl, cl = K.find_best_split(
         hist, feats, bm.n_bins_, bm.missing_bin, g.sum(), h.sum(), float(n), lam, 0.0, gamma, 0.0, 1
     )
@@ -59,7 +59,7 @@ def test_missing_direction_is_learned():
     bm = BinMapper().fit(X)
     XbT = bm.transform(X)
     rows = np.arange(n, dtype=np.int32)
-    hist = K.build_histogram(XbT, rows, g, np.ones(n), np.arange(1), bm.max_bins)
+    hist = K.build_histogram(XbT, rows, g, np.ones(n), np.arange(1), bm.n_bins_, bm.max_bins)
     _, f, b, dl, *_ = K.find_best_split(
         hist, np.arange(1), bm.n_bins_, bm.missing_bin, g.sum(), float(n), float(n), 1.0, 0.0, 0.0, 0.0, 1
     )
@@ -77,8 +77,8 @@ def test_parallel_and_serial_histograms_agree():
     rows = np.sort(rng.choice(n, 12_000, replace=False)).astype(np.int32)
     g, h = rng.normal(size=n), rng.uniform(size=n)
     feats = np.arange(d)
-    a = K.build_histogram_serial(XbT, rows, g, h, feats, 256)
-    b = K.build_histogram_parallel(XbT, rows, g, h, feats, 256)
+    a = K.build_histogram_serial(XbT, rows, g, h, feats, bm.n_bins_, 256)
+    b = K.build_histogram_parallel(XbT, rows, g, h, feats, bm.n_bins_, 256)
     np.testing.assert_allclose(a, b, rtol=1e-12, atol=1e-12)
     # every feature's histogram sums to the node totals
     np.testing.assert_allclose(a[:, :, 0].sum(axis=1), g[rows].sum())
@@ -123,3 +123,23 @@ def test_tree_shape_limits():
     # a huge gamma forbids every split
     t, *_ = _grow(X, g, h, max_depth=6, gamma=1e9)
     assert t.n_nodes == 1
+
+
+@pytest.mark.parametrize("n_rows", [1, 2, 3, 4, 5, 1001, 4099])
+def test_histogram_matches_bincount(n_rows):
+    """The unrolled kernel must equal a plain ``np.bincount`` reference for any row count."""
+    rng = np.random.default_rng(n_rows)
+    n, d = 6000, 5
+    X = rng.normal(size=(n, d))
+    X[:, 1] = rng.integers(0, 2, size=n)  # binary feature: long runs hit the same bin
+    X[rng.random((n, d)) < 0.1] = np.nan
+    bm = BinMapper().fit(X)
+    XbT = bm.transform(X)
+    rows = np.sort(rng.choice(n, n_rows, replace=False)).astype(np.int32)
+    g, h = rng.normal(size=n), rng.uniform(0.1, 1.0, size=n)
+    hist = K.build_histogram_serial(XbT, rows, g, h, np.arange(d), bm.n_bins_, bm.max_bins)
+    for f in range(d):
+        codes = XbT[f][rows].astype(np.int64)
+        for c, w in enumerate([g[rows], h[rows], np.ones(n_rows)]):
+            expected = np.bincount(codes, weights=w, minlength=bm.max_bins)
+            np.testing.assert_allclose(hist[f, :, c], expected, atol=1e-10)
