@@ -1,0 +1,3 @@
+total_gain: spearman=1.0000 max |diff of shares|=0.0012
+total_cover: spearman=0.9524 max |diff of shares|=0.0144
+weight: spearman=0.9048 max |diff of shares|=0.0118

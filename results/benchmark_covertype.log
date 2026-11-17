@@ -1,0 +1,22 @@
+covertype: task=multiclass train=(120000, 54) val=40000 test=40000 missing_train=0
+  [covertype seed=0] ours           fit  196.93s wall   48.27s cpu  accuracy=0.9119  logloss=0.2332
+  [covertype seed=0] ours-leafwise  fit  181.62s wall   65.32s cpu  accuracy=0.9434  logloss=0.1561
+  [covertype seed=0] xgboost        fit   25.26s wall   11.72s cpu  accuracy=0.8799  logloss=0.3066
+  [covertype seed=0] lightgbm       fit   16.09s wall    8.88s cpu  accuracy=0.9416  logloss=0.1620
+  [covertype seed=0] sklearn        fit  216.00s wall   71.13s cpu  accuracy=0.9439  logloss=0.1596
+  [covertype seed=1] ours           fit  130.31s wall   46.74s cpu  accuracy=0.9138  logloss=0.2332
+  [covertype seed=1] ours-leafwise  fit  137.73s wall   53.79s cpu  accuracy=0.9434  logloss=0.1593
+  [covertype seed=1] xgboost        fit   26.08s wall   12.50s cpu  accuracy=0.8809  logloss=0.3102
+  [covertype seed=1] lightgbm       fit   12.62s wall    8.24s cpu  accuracy=0.9429  logloss=0.1630
+  [covertype seed=1] sklearn        fit   88.18s wall   57.27s cpu  accuracy=0.9452  logloss=0.1590
+  [covertype] curves ours           best val round 200  accuracy=0.9119  logloss=0.2332
+  [covertype] curves ours-leafwise  best val round 200  accuracy=0.9434  logloss=0.1561
+  [covertype] curves xgboost        best val round 200  accuracy=0.8799  logloss=0.3066
+  [covertype] curves lightgbm       best val round 200  accuracy=0.9416  logloss=0.1620
+  [covertype] curves sklearn        best val round 200  accuracy=0.9439  logloss=0.1596
+  [covertype] time curve ours: 10r=1.91s, 25r=4.03s, 50r=7.40s, 100r=16.13s, 200r=48.27s
+  [covertype] time curve ours-leafwise: 10r=2.93s, 25r=6.79s, 50r=12.03s, 100r=22.93s, 200r=65.32s
+  [covertype] time curve xgboost: 10r=0.75s, 25r=1.76s, 50r=3.01s, 100r=5.48s, 200r=11.72s
+  [covertype] time curve lightgbm: 10r=0.59s, 25r=1.18s, 50r=2.20s, 100r=4.09s, 200r=8.88s
+  [covertype] time curve sklearn: 10r=2.90s, 25r=6.81s, 50r=13.32s, 100r=33.60s, 200r=71.13s
+== covertype done in 1622s

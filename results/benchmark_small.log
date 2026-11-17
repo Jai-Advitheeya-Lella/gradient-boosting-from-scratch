@@ -1,0 +1,81 @@
+california: task=regression train=(12384, 8) val=4128 test=4128 missing_train=0
+  [california seed=0] ours           fit    2.60s wall    0.62s cpu  rmse=0.4524  mae=0.2991  r2=0.8430
+  [california seed=0] ours-leafwise  fit    1.79s wall    0.74s cpu  rmse=0.4525  mae=0.2982  r2=0.8430
+  [california seed=0] xgboost        fit    0.50s wall    0.34s cpu  rmse=0.4524  mae=0.2992  r2=0.8431
+  [california seed=0] lightgbm       fit    0.92s wall    0.31s cpu  rmse=0.4502  mae=0.2970  r2=0.8446
+  [california seed=0] sklearn        fit    1.62s wall    0.55s cpu  rmse=0.4457  mae=0.2940  r2=0.8477
+  [california seed=1] ours           fit    1.96s wall    0.66s cpu  rmse=0.4600  mae=0.3000  r2=0.8387
+  [california seed=1] ours-leafwise  fit    0.78s wall    0.65s cpu  rmse=0.4552  mae=0.2986  r2=0.8420
+  [california seed=1] xgboost        fit    0.39s wall    0.33s cpu  rmse=0.4623  mae=0.3005  r2=0.8371
+  [california seed=1] lightgbm       fit    0.31s wall    0.29s cpu  rmse=0.4541  mae=0.2979  r2=0.8428
+  [california seed=1] sklearn        fit    1.48s wall    0.55s cpu  rmse=0.4503  mae=0.2946  r2=0.8454
+  [california seed=2] ours           fit    1.15s wall    0.63s cpu  rmse=0.4674  mae=0.3030  r2=0.8378
+  [california seed=2] ours-leafwise  fit    0.91s wall    0.65s cpu  rmse=0.4685  mae=0.3039  r2=0.8371
+  [california seed=2] xgboost        fit    0.35s wall    0.33s cpu  rmse=0.4691  mae=0.3035  r2=0.8367
+  [california seed=2] lightgbm       fit    0.30s wall    0.30s cpu  rmse=0.4627  mae=0.3005  r2=0.8411
+  [california seed=2] sklearn        fit    0.48s wall    0.48s cpu  rmse=0.4702  mae=0.3055  r2=0.8359
+  [california] curves ours           best val round 400  rmse=0.4524  mae=0.2991  r2=0.8430
+  [california] curves ours-leafwise  best val round 364  rmse=0.4517  mae=0.2979  r2=0.8435
+  [california] curves xgboost        best val round 398  rmse=0.4525  mae=0.2993  r2=0.8430
+  [california] curves lightgbm       best val round 349  rmse=0.4499  mae=0.2965  r2=0.8448
+  [california] curves sklearn        best val round 400  rmse=0.4457  mae=0.2940  r2=0.8477
+  [california] time curve ours: 10r=0.03s, 25r=0.05s, 50r=0.09s, 100r=0.16s, 200r=0.30s, 400r=0.62s
+  [california] time curve ours-leafwise: 10r=0.03s, 25r=0.06s, 50r=0.11s, 100r=0.26s, 200r=0.49s, 400r=0.74s
+  [california] time curve xgboost: 10r=0.03s, 25r=0.05s, 50r=0.07s, 100r=0.13s, 200r=0.24s, 400r=0.34s
+  [california] time curve lightgbm: 10r=0.03s, 25r=0.04s, 50r=0.07s, 100r=0.12s, 200r=0.23s, 400r=0.31s
+  [california] time curve sklearn: 10r=0.03s, 25r=0.06s, 50r=0.12s, 100r=0.16s, 200r=0.27s, 400r=0.55s
+== california done in 32s
+adult: task=binary train=(29304, 14) val=9769 test=9769 missing_train=3897
+  [adult seed=0] ours           fit    2.32s wall    0.65s cpu  accuracy=0.8736  auc=0.9266  logloss=0.2801
+  [adult seed=0] ours-leafwise  fit    0.87s wall    0.80s cpu  accuracy=0.8674  auc=0.9227  logloss=0.2908
+  [adult seed=0] xgboost        fit    0.39s wall    0.30s cpu  accuracy=0.8712  auc=0.9263  logloss=0.2803
+  [adult seed=0] lightgbm       fit    0.69s wall    0.44s cpu  accuracy=0.8674  auc=0.9241  logloss=0.2887
+  [adult seed=0] sklearn        fit    2.48s wall    0.83s cpu  accuracy=0.8674  auc=0.9231  logloss=0.2900
+  [adult seed=1] ours           fit    1.19s wall    0.62s cpu  accuracy=0.8730  auc=0.9282  logloss=0.2777
+  [adult seed=1] ours-leafwise  fit    5.30s wall    1.06s cpu  accuracy=0.8693  auc=0.9244  logloss=0.2880
+  [adult seed=1] xgboost        fit    6.36s wall    0.41s cpu  accuracy=0.8732  auc=0.9282  logloss=0.2777
+  [adult seed=1] lightgbm       fit    4.99s wall    0.54s cpu  accuracy=0.8714  auc=0.9244  logloss=0.2882
+  [adult seed=1] sklearn        fit    4.34s wall    1.02s cpu  accuracy=0.8714  auc=0.9246  logloss=0.2875
+  [adult seed=2] ours           fit   10.49s wall    0.83s cpu  accuracy=0.8715  auc=0.9313  logloss=0.2724
+  [adult seed=2] ours-leafwise  fit    1.45s wall    0.88s cpu  accuracy=0.8678  auc=0.9267  logloss=0.2832
+  [adult seed=2] xgboost        fit    0.42s wall    0.30s cpu  accuracy=0.8719  auc=0.9311  logloss=0.2725
+  [adult seed=2] lightgbm       fit    1.60s wall    0.55s cpu  accuracy=0.8704  auc=0.9275  logloss=0.2811
+  [adult seed=2] sklearn        fit    5.49s wall    0.79s cpu  accuracy=0.8684  auc=0.9274  logloss=0.2811
+  [adult] curves ours           best val round 161  accuracy=0.8741  auc=0.9276  logloss=0.2780
+  [adult] curves ours-leafwise  best val round 107  accuracy=0.8721  auc=0.9264  logloss=0.2802
+  [adult] curves xgboost        best val round 153  accuracy=0.8740  auc=0.9275  logloss=0.2779
+  [adult] curves lightgbm       best val round 99  accuracy=0.8717  auc=0.9269  logloss=0.2792
+  [adult] curves sklearn        best val round 100  accuracy=0.8727  auc=0.9263  logloss=0.2803
+  [adult] time curve ours: 10r=0.04s, 25r=0.10s, 50r=0.15s, 100r=0.26s, 200r=0.46s, 300r=0.65s
+  [adult] time curve ours-leafwise: 10r=0.05s, 25r=0.11s, 50r=0.20s, 100r=0.44s, 200r=0.78s, 300r=0.80s
+  [adult] time curve xgboost: 10r=0.05s, 25r=0.08s, 50r=0.13s, 100r=0.18s, 200r=0.31s, 300r=0.30s
+  [adult] time curve lightgbm: 10r=0.04s, 25r=0.07s, 50r=0.11s, 100r=0.19s, 200r=0.33s, 300r=0.44s
+  [adult] time curve sklearn: 10r=0.05s, 25r=0.10s, 50r=0.18s, 100r=0.34s, 200r=0.68s, 300r=0.83s
+== adult done in 102s
+higgs: task=binary train=(58830, 28) val=19610 test=19610 missing_train=9
+  [higgs seed=0] ours           fit    8.31s wall    3.06s cpu  accuracy=0.7171  auc=0.7983  logloss=0.5404
+  [higgs seed=0] ours-leafwise  fit   11.49s wall    3.24s cpu  accuracy=0.7185  auc=0.7982  logloss=0.5411
+  [higgs seed=0] xgboost        fit    2.28s wall    1.77s cpu  accuracy=0.7207  auc=0.7990  logloss=0.5399
+  [higgs seed=0] lightgbm       fit    2.12s wall    1.76s cpu  accuracy=0.7201  auc=0.7978  logloss=0.5414
+  [higgs seed=0] sklearn        fit    2.93s wall    2.07s cpu  accuracy=0.7194  auc=0.7982  logloss=0.5407
+  [higgs seed=1] ours           fit   18.51s wall    3.97s cpu  accuracy=0.7250  auc=0.8015  logloss=0.5374
+  [higgs seed=1] ours-leafwise  fit   13.84s wall    3.28s cpu  accuracy=0.7247  auc=0.8009  logloss=0.5383
+  [higgs seed=1] xgboost        fit   10.74s wall    2.26s cpu  accuracy=0.7249  auc=0.8008  logloss=0.5382
+  [higgs seed=1] lightgbm       fit   15.52s wall    2.30s cpu  accuracy=0.7244  auc=0.8004  logloss=0.5390
+  [higgs seed=1] sklearn        fit   18.92s wall    2.75s cpu  accuracy=0.7248  auc=0.8011  logloss=0.5381
+  [higgs seed=2] ours           fit    8.36s wall    3.48s cpu  accuracy=0.7258  auc=0.8064  logloss=0.5314
+  [higgs seed=2] ours-leafwise  fit    5.10s wall    2.73s cpu  accuracy=0.7243  auc=0.8058  logloss=0.5320
+  [higgs seed=2] xgboost        fit    9.50s wall    1.87s cpu  accuracy=0.7310  auc=0.8087  logloss=0.5292
+  [higgs seed=2] lightgbm       fit   12.59s wall    2.20s cpu  accuracy=0.7288  auc=0.8075  logloss=0.5301
+  [higgs seed=2] sklearn        fit   16.76s wall    2.73s cpu  accuracy=0.7320  auc=0.8076  logloss=0.5305
+  [higgs] curves ours           best val round 195  accuracy=0.7211  auc=0.7994  logloss=0.5390
+  [higgs] curves ours-leafwise  best val round 176  accuracy=0.7212  auc=0.7988  logloss=0.5398
+  [higgs] curves xgboost        best val round 163  accuracy=0.7212  auc=0.7989  logloss=0.5395
+  [higgs] curves lightgbm       best val round 147  accuracy=0.7214  auc=0.7993  logloss=0.5390
+  [higgs] curves sklearn        best val round 245  accuracy=0.7195  auc=0.7988  logloss=0.5397
+  [higgs] time curve ours: 10r=0.23s, 25r=0.39s, 50r=0.61s, 100r=1.05s, 200r=1.83s, 300r=3.06s
+  [higgs] time curve ours-leafwise: 10r=0.29s, 25r=0.44s, 50r=0.72s, 100r=1.12s, 200r=2.78s, 300r=3.24s
+  [higgs] time curve xgboost: 10r=0.34s, 25r=0.40s, 50r=0.48s, 100r=0.84s, 200r=1.29s, 300r=1.77s
+  [higgs] time curve lightgbm: 10r=0.27s, 25r=0.50s, 50r=0.75s, 100r=1.00s, 200r=1.85s, 300r=1.76s
+  [higgs] time curve sklearn: 10r=0.24s, 25r=0.39s, 50r=0.68s, 100r=1.29s, 200r=1.60s, 300r=2.07s
+== higgs done in 321s

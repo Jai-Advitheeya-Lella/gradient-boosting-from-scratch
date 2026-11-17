@@ -1,0 +1,4 @@
+loss                                   RMSE vs clean signal    MAE vs clean signal
+squared error                                        1.3887                 0.9804
+pseudo-Huber (built in, delta=1)                     0.9939                 0.7348
+log-cosh (CustomLoss)                                0.7777                 0.5352

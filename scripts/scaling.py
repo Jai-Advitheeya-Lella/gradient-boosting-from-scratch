@@ -11,7 +11,8 @@ import os
 import sys
 import time
 
-os.environ.setdefault("GBDT_BENCH_THREADS", "1")
+for _k in ("GBDT_BENCH_THREADS", "OMP_NUM_THREADS", "NUMBA_NUM_THREADS"):
+    os.environ[_k] = "1"  # before numpy / sklearn load their thread pools
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 sys.path.insert(0, os.path.join(ROOT, "benchmarks"))
 

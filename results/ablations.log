@@ -1,0 +1,37 @@
+bins=  8  auc=0.7846  time=1.31s
+bins= 16  auc=0.7956  time=1.15s
+bins= 32  auc=0.7981  time=1.07s
+bins= 64  auc=0.7995  time=1.27s
+bins=128  auc=0.7995  time=1.18s
+bins=256  auc=0.7990  time=1.40s
+lambda=    0.0 gamma=  0.0 rmse=0.4605 rounds=237
+lambda=    0.0 gamma=  0.0 rmse=0.4650 rounds=168
+lambda=    0.0 gamma=  0.1 rmse=0.4786 rounds=69
+lambda=    0.0 gamma=  0.5 rmse=0.4901 rounds=47
+lambda=    0.0 gamma=  2.0 rmse=0.5109 rounds=41
+lambda=    1.0 gamma=  0.0 rmse=0.4554 rounds=309
+lambda=    1.0 gamma=  0.0 rmse=0.4593 rounds=197
+lambda=    1.0 gamma=  0.1 rmse=0.4735 rounds=315
+lambda=    1.0 gamma=  0.5 rmse=0.4886 rounds=292
+lambda=    1.0 gamma=  2.0 rmse=0.5139 rounds=267
+lambda=   10.0 gamma=  0.0 rmse=0.4554 rounds=451
+lambda=   10.0 gamma=  0.0 rmse=0.4580 rounds=247
+lambda=   10.0 gamma=  0.1 rmse=0.4727 rounds=350
+lambda=   10.0 gamma=  0.5 rmse=0.4904 rounds=310
+lambda=   10.0 gamma=  2.0 rmse=0.5080 rounds=286
+lambda=  100.0 gamma=  0.0 rmse=0.4452 rounds=600
+lambda=  100.0 gamma=  0.0 rmse=0.4471 rounds=479
+lambda=  100.0 gamma=  0.1 rmse=0.4644 rounds=399
+lambda=  100.0 gamma=  0.5 rmse=0.4941 rounds=333
+lambda=  100.0 gamma=  2.0 rmse=0.5262 rounds=309
+lambda= 1000.0 gamma=  0.0 rmse=0.4478 rounds=600
+lambda= 1000.0 gamma=  0.0 rmse=0.4471 rounds=598
+lambda= 1000.0 gamma=  0.1 rmse=0.4694 rounds=599
+lambda= 1000.0 gamma=  0.5 rmse=0.5097 rounds=429
+lambda= 1000.0 gamma=  2.0 rmse=0.5548 rounds=393
+full data                        auc=0.7990±0.0000 time=1.45s
+uniform 50%                      auc=0.7969±0.0008 time=1.40s
+uniform 30%                      auc=0.7927±0.0020 time=1.15s
+GOSS (top 20% + 10% of rest)     auc=0.7888±0.0002 time=1.08s
+colsample_bytree 50%             auc=0.7995±0.0003 time=1.07s
+colsample_bynode 50%             auc=0.7992±0.0005 time=1.38s
